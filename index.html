@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quasi Neuf - Téléphones & Électroniques quasi neufs</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #06d6a0;
+            --accent: #ff6b6b;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .logo-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .whatsapp-header {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-header:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            margin-top: 80px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-2 {
+            background: linear-gradient(rgba(67, 97, 238, 0.8), rgba(58, 12, 163, 0.8)), 
+                        url('https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-3 {
+            background: linear-gradient(rgba(255, 107, 107, 0.8), rgba(255, 167, 129, 0.8)), 
+                        url('https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-content {
+            max-width: 600px;
+            color: white;
+            transform: translateY(30px);
+            transition: transform 0.8s ease;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .product-image img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge.test {
+            background: rgba(6, 214, 160, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .badge.verify {
+            background: rgba(255, 209, 102, 0.2);
+            color: #b87d00;
+            border: 1px solid var(--warning);
+        }
+
+        .badge.warranty {
+            background: var(--primary);
+            color: white;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .badge.warranty-3 {
+            background: #8b5cf6;
+        }
+
+        .badge.warranty-6 {
+            background: #06d6a0;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .product-specs {
+            list-style: none;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .product-specs li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-price span {
+            font-size: 1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-details {
+            background: var(--gray-light);
+            color: var(--dark);
+        }
+
+        .btn-details:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== GALLERY MODAL ===== */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideInLeft 0.4s ease;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+        }
+
+        .modal-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .modal-info h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-info .product-price {
+            margin-bottom: 1rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #4361ee, #06d6a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Contact Info */
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .contact-text p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .contact-text a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Contact Form */
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Form Messages */
+        .form-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-message.success {
+            background: rgba(6, 214, 160, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            display: block;
+        }
+
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .map-placeholder h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            z-index: 1;
+        }
+
+        .map-placeholder p {
+            color: var(--gray);
+            z-index: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f0f1a;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ===== WHATSAPP FLOAT BUTTON ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .whatsapp-header {
+                display: none;
+            }
+            
+            .hero-slider {
+                height: 500px;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-slider {
+                height: 400px;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .contact-info-card, .contact-form-card {
+                padding: 1.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">QN</div>
+                <div class="logo-text">
+                    <h1>QUASI NEUF</h1>
+                    <span>Téléphones & Électroniques</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#products">Produits</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <a href="https://wa.me/2250757850447" class="whatsapp-header" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero-slider" id="home">
+        <div class="slide slide-1 active">
+            <div class="slide-content animate-fade-in">
+                <h2>Téléphones Quasi Neufs Garantis</h2>
+                <p>Tous nos appareils sont testés, vérifiés et garantis 2 mois. Qualité d'origine à prix réduits.</p>
+                <a href="#products" class="cta-button">Voir les produits</a>
+            </div>
+        </div>
+        
+        <div class="slide slide-2">
+            <div class="slide-content animate-fade-in">
+                <h2>Gaming & Électroniques</h2>
+                <p>Ordinateurs gaming, accessoires et équipements électroniques quasi neufs.</p>
+                <a href="#products" class="cta-button">Découvrir</a>
+            </div>
+        </div>
+        
+        <div class="slide slide-3">
+            <div class="slide-content animate-fade-in">
+                <h2>Service Après-Vente</h2>
+                <p>Garantie 2 mois sur tous nos produits. Service client disponible 7j/7.</p>
+                <a href="#contact" class="cta-button">Nous contacter</a>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS GALLERY (10 PRODUITS VARIÉS) ===== -->
+    <section id="products">
+        <div class="section-title">
+            <h2 class="animate-slide-left">NOTRE GAMME DIVERSIFIÉE</h2>
+            <p class="animate-slide-right">10 produits de différentes marques avec garanties</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Produit 1 - iPhone (seul produit Apple) -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="1">
+                    <img src="image/ik.jpg" alt="iPhone 15">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge verify">V</span>
+                        <span class="badge warranty">GARANTIE 2 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div>
+                    <h3 class="product-title">iPhone 17 pro max</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 6,1" Super Retina XDR</li>
+                        <li><i class="fas fa-microchip"></i> Puce A16 Bionic</li>
+                        <li><i class="fas fa-camera"></i> Double caméra 48MP</li>
+                        <li><i class="fas fa-battery-full"></i> Batterie 100% santé</li>
+                    </ul>
+                    <div class="product-price">
+                        930 000 FCFA
+                        <span>1100 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iPhone%2017%20128GB%20argent" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 2 - Samsung -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="2">
+                    <img src="image/lo.jpg" alt="Samsung Galaxy">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge verify">V</span>
+                        <span class="badge warranty warranty-6">GARANTIE 6 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div>
+                    <h3 class="product-title">iphone 14 simple</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 6,4" Super AMOLED 120Hz</li>
+                        <li><i class="fas fa-microchip"></i> Exynos 1380 Octa-Core</li>
+                        <li><i class="fas fa-camera"></i>  50MP</li>
+                        <li><i class="fas fa-shield-alt"></i> IP67 étanche</li>
+                    </ul>
+                    <div class="product-price">
+                        260 000 FCFA
+                        <span>300 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2014%20A54%205G" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 3 - Tecno -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="3">
+                    <img src="image/ta.jpg" alt="Tecno Phone">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge warranty">GARANTIE 2 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Tablette Apple</div>
+                    <h3 class="product-title">ipad (A16)</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> </li>
+                        <li><i class="fas fa-microchip"></i> MediaTek Dimensity 9000+</li>
+                        <li><i class="fas fa-camera"></i>  caméra 50MP + 50MP</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh ultra-rapide</li>
+                    </ul>
+                    <div class="product-price">
+                        280 000 FCFA
+                        <span>340 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=ipad%20%20V%20Fold" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 4 - Infinix -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="4">
+                    <img src="image/loi.jpg" alt="Infinix Phone">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge warranty">GARANTIE 2 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div> <h3 class="product-title">iphone 13</h3>
+                    
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 128 go</li>
+                        <li><i class="fas fa-microchip"></i> Dimensity 8020 5G</li>
+                        <li><i class="fas fa-camera"></i> 108MP OIS + selfie 50MP</li>
+                        <li><i class="fas fa-bolt"></i> Charge 68W rapide</li>
+                    </ul>
+                    <div class="product-price">
+                        230 000 FCFA
+                        <span>270 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2013%2030%205G" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 5 - Xiaomi -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="5">
+                    <img src="image/no.jpg" alt="Xiaomi Phone">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge verify">V</span>
+                        <span class="badge warranty warranty-3">GARANTIE 3 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div>
+                    <h3 class="product-title">iphone 13</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 128go</li>
+                        <li><i class="fas fa-microchip"></i> </li>
+                        <li><i class="fas fa-camera"></i> 200MP avec OIS</li>
+                        <li><i class="fas fa-bolt"></i> Charge 120W ultra-rapide</li>
+                    </ul>
+                    <div class="product-price">
+                        230 000 FCFA
+                        <span>270 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2013%20Note%2013%20Pro%2B" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 6 - HP Laptop -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="6">
+                    <img src="image/oo.jpg" alt="HP Laptop">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge warranty warranty-3">GARANTIE 1 ans</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Telephone Apple</div>
+                    <h3 class="product-title">iphone 16</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-microchip"></i> 128 go</li>
+                        <li><i class="fas fa-gamepad"></i> </li>
+                        <li><i class="fas fa-memory"></i> </li>
+                        <li><i class="fas fa-desktop"></i> 15,6" FHD 144Hz</li>
+                    </ul>
+                    <div class="product-price">
+                        440 900 FCFA
+                        <span>480 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2016%20%20" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 7 - Tablet Samsung -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="7">
+                    <img src="image/uu.jpg" alt="Samsung Tablet">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge verify">V</span>
+                        <span class="badge warranty">GARANTIE 1 ans</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">telephone Apple</div>
+                    <h3 class="product-title">iphone 16</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-tablet-alt"></i> </li>
+                        <li><i class="fas fa-microchip"></i> </li>
+                        <li><i class="fas fa-sd-card"></i> 128GB + 8GB RAM</li>
+                        <li><i class="fas fa-pencil-alt"></i> S-Pen incluse</li>
+                    </ul>
+                    <div class="product-price">
+                        440 000 FCFA
+                        <span>480 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2016%20S9%20FE%2B" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 8 - PlayStation -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="8">
+                    <img src="image/ll.jpg" alt="PlayStation 5">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge warranty warranty-6">GARANTIE 6 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Telephone Apple</div>
+                    <h3 class="product-title">iphone 16 pro</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-gamepad"></i> 128go</li>
+                        <li><i class="fas fa-compact-disc"></i> camera ultra performant</li>
+                        <li><i class="fas fa-tachometer-alt"></i> SSD ultra-rapide</li>
+                        <li><i class="fas fa-tv"></i> 4K/120Hz - Ray Tracing</li>
+                    </ul>
+                    <div class="product-price">
+                        560 000 FCFA
+                        <span>590 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%205%2016" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 9 - Itel -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="9">
+                    <img src="image/pp.jpg" alt="Itel Phone">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge warranty">GARANTIE 2 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div>
+                    <h3 class="product-title">iphone 13</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 6,78" AMOLED 120Hz</li>
+                        <li><i class="fas fa-microchip"></i> 128go</li>
+                        <li><i class="fas fa-camera"></i>  caméra</li>
+                        <li><i class="fas fa-battery-full"></i> 5000mAh + 45W</li>
+                    </ul>
+                    <div class="product-price">
+                        230 000 FCFA
+                        <span>330 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=iphone%2013%2B%20" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 10 - Nokia -->
+            <div class="product-card animate-fade-in">
+                <div class="product-image" data-product="10">
+                    <img src="image/hh.jpg" alt="Nokia Phone">
+                    <div class="product-badges">
+                        <span class="badge test">T</span>
+                        <span class="badge verify">V</span>
+                        <span class="badge warranty warranty-6">GARANTIE 6 MOIS</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Téléphone Apple</div>
+                    <h3 class="product-title">iphone 13</h3>
+                    <ul class="product-specs">
+                        <li><i class="fas fa-mobile-alt"></i> 128go</li>
+                        <li><i class="fas fa-microchip"></i> </li>
+                        <li><i class="fas fa-camera"></i>  caméra </li>
+                        <li><i class="fas fa-wrench"></i> Réparable facilement</li>
+                    </ul>
+                    <div class="product-price">
+                        230 000 FCFA
+                        <span>330 000 FCFA</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="https://wa.me/2250757850447?text=Nokia%20G42%205G%20128GB" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <button class="btn btn-details">
+                            <i class="fas fa-expand"></i> Agrandir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY MODAL ===== -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modalImage" src="" alt="Produit">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <div class="product-price" id="modalPrice"></div>
+                <a href="#" class="btn btn-whatsapp" id="modalWhatsapp" target="_blank" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-title">
+                <h2 class="animate-slide-left">CONTACTEZ-NOUS</h2>
+                <p class="animate-slide-right">Une question ? Un problème ? Nous sommes là pour vous aider</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-card animate-slide-left">
+                    <div class="contact-info">
+                        <h3><i class="fas fa-info-circle"></i> Nos Coordonnées</h3>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Notre Adresse</h4>
+                                    <p>
+                                        GRAND CARREFOUR N'DOTRE<br>
+                                        Non loin de Paris Baguette<br>
+                                        Abidjan, Côte d'Ivoire
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Téléphone</h4>
+                                    <p>
+                                        <a href="tel:+2250757850447">07 57 85 04 47</a><br>
+                                        Du lundi au samedi : 8h - 20h<br>
+                                        Dimanche : 9h - 18h
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>WhatsApp</h4>
+                                    <p>
+                                        <a href="https://wa.me/2250757850447" target="_blank">Cliquez pour discuter</a><br>
+                                        Réponse rapide garantie<br>
+                                        Service client 7j/7
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://wa.me/2250757850447" class="social-link" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-card animate-slide-right">
+                    <div class="contact-form">
+                        <h3><i class="fas fa-paper-plane"></i> Envoyez un Message</h3>
+                        
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Nom Complet *</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom et prénom" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Téléphone *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="07 00 00 00 00" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Adresse Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="votre@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Sujet *</label>
+                                <select id="subject" name="subject" class="form-control" required>
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="Demande sur produit">Demande sur un produit</option>
+                                    <option value="Commande">Passer une commande</option>
+                                    <option value="Garantie">Service après-vente / Garantie</option>
+                                    <option value="Autre">Autre demande</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-control" placeholder="Décrivez votre demande en détail..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Envoyer le Message
+                            </button>
+                            
+                            <div class="form-message" id="formMessage"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAP SECTION ===== -->
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>Notre Localisation</h3>
+                <p>Grand Carrefour N'Dotre, Abidjan</p>
+                <a href="https://maps.google.com/?q=Grand+Carrefour+N'Dotre+Abidjan" 
+                   target="_blank" 
+                   style="margin-top: 1rem; color: var(--primary); text-decoration: none; font-weight: 600;">
+                   <i class="fas fa-directions"></i> Voir sur Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>QUASI NEUF</h3>
+                <p>Revendeur de téléphones et électroniques quasi neufs d'origine. Qualité garantie, prix réduits.</p>
+                <div class="social-links" style="margin-top: 1rem;">
+                    <a href="https://facebook.com" class="social-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/2250757850447" class="social-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>LIENS RAPIDES</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-right"></i> Produits</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> À Propos</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>CONTACT</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+2250757850447"><i class="fas fa-phone"></i> 07 57 85 04 47</a></li>
+                    <li><a href="https://wa.me/2250757850447" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="mailto:contact@quasineuf.ci"><i class="fas fa-envelope"></i> contact@quasineuf.ci</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Grand Carrefour N'Dotre</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Quasi Neuf. Tous droits réservés. | Mr Quasi Neuf - Revendeur de téléphones quasi neufs d'origine</p>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOAT BUTTON ===== -->
+    <a href="https://wa.me/2250757850447?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20produits" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== SLIDER AUTOMATIQUE =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        setInterval(nextSlide, 5000);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // ===== MENU MOBILE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // ===== ANIMATION DES PRODUITS AU SCROLL =====
+        const productCards = document.querySelectorAll('.product-card');
+        
+        function checkScroll() {
+            productCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+        
+        // ===== GALLERY MODAL =====
+        const galleryModal = document.getElementById('galleryModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalWhatsapp = document.getElementById('modalWhatsapp');
+        
+        // Ouvrir la modal en cliquant sur l'image ou le bouton "Agrandir"
+        document.querySelectorAll('.product-image, .btn-details').forEach(element => {
+            element.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = productCard.querySelector('.product-price').textContent;
+                const image = productCard.querySelector('.product-image img').src;
+                const whatsappLink = productCard.querySelector('.btn-whatsapp').href;
+                
+                modalImage.src = image;
+                modalTitle.textContent = title;
+                modalPrice.innerHTML = price;
+                modalWhatsapp.href = whatsappLink;
+                
+                galleryModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Fermer la modal
+        modalClose.addEventListener('click', () => {
+            galleryModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fermer en cliquant à l'extérieur
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) {
+                galleryModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && galleryModal.classList.contains('active')) {
+                galleryModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // ===== FORMULAIRE DE CONTACT =====
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value || 'Non renseigné';
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `*Nouveau message de ${name}*\n\n` +
+                                   `📱 *Téléphone:* ${phone}\n` +
+                                   `📧 *Email:* ${email}\n` +
+                                   `📋 *Sujet:* ${subject}\n\n` +
+                                   `💬 *Message:*\n${message}\n\n` +
+                                   `🕒 *Date:* ${new Date().toLocaleString('fr-FR')}`;
+            
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            window.open(`https://wa.me/2250757850447?text=${encodedMessage}`, '_blank');
+            
+            formMessage.textContent = '✅ Message envoyé avec succès ! Nous vous répondrons sur WhatsApp.';
+            formMessage.className = 'form-message success';
+            
+            setTimeout(() => {
+                contactForm.reset();
+                formMessage.className = 'form-message';
+                formMessage.textContent = '';
+            }, 5000);
+            
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+            submitBtn.style.background = 'linear-gradient(135deg, #06d6a0, #04b486)';
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = 'linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%)';
+            }, 3000);
+        });
+        
+        // ===== FORMATAGE DU TÉLÉPHONE =====
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = value.match(/.{1,2}/g).join(' ');
+            }
+            e.target.value = value.substring(0, 14);
+        });
+        
+        // ===== SCROLL SMOOTH POUR LES LIENS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ===== ANIMATION AU CHARGEMENT =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.animate-fade-in').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 300);
+            
+            setTimeout(() => {
+                document.querySelectorAll('.animate-slide-left').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateX(0)';
+                });
+            }, 500);
+            
+            setTimeout(() => {
+                document.querySelectorAll('.animate-slide-right').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateX(0)';
+                });
+            }, 700);
+        });
+    </script>
+</body>
+</html>
